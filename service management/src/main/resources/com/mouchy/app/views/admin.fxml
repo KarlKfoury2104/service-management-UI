@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1050.0" styleClass="root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mouchy.app.controllers.AdminController">
+    <stylesheets>
+        <URL value="@../css/style.css" />
+    </stylesheets>
+    <children>
+        <SplitPane dividerPositions="0.21" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" styleClass="sidebar-split-pane">
+            <items>
+                <!-- SIDEBAR -->
+                <VBox minWidth="90.0" prefWidth="220.0" maxWidth="360.0" styleClass="sidebar" SplitPane.resizableWithParent="false">
+                    <children>
+                        <Label styleClass="sidebar-brand" text="MOUCHY ADMIN" />
+                        
+                        <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Button fx:id="btnNavDashboard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showDashboard" styleClass="nav-button nav-button-active" text="📊  Dashboard" />
+                                <Button fx:id="btnNavServices" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showServices" styleClass="nav-button" text="💼  Services Catalog" />
+                                <Button fx:id="btnNavRequests" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showRequests" styleClass="nav-button" text="📥  Client Requests" />
+                                <Button fx:id="btnNavUsers" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showUsers" styleClass="nav-button" text="👥  User Accounts" />
+                            </children>
+                        </VBox>
+                        
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="100.0">
+                            <children>
+                                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogout" styleClass="btn-secondary" text="🚪  Log Out" />
+                            </children>
+                            <padding>
+                                <Insets left="20.0" right="20.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <!-- MAIN CONTENT AREA -->
+                <StackPane minWidth="500.0" styleClass="content-area">
+                    <children>
+                        
+                        <!-- PANE 1: DASHBOARD -->
+                        <VBox fx:id="paneDashboard" spacing="20.0">
+                            <children>
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label styleClass="label-title" text="Administrator Dashboard" />
+                                        <Label styleClass="label-subtitle" text="Real-time portal performance metrics and reports." />
+                                    </children>
+                                </VBox>
+                                
+                                <HBox spacing="20.0">
+                                    <children>
+                                        <VBox styleClass="card-stat" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label styleClass="card-stat-title" text="COMPLETED REVENUE" />
+                                                <Label fx:id="lblTotalRevenue" styleClass="card-stat-value" text="\$0.00" />
+                                            </children>
+                                        </VBox>
+                                        <VBox styleClass="card-stat" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label styleClass="card-stat-title" text="ACTIVE BOOKINGS" />
+                                                <Label fx:id="lblActiveBookings" styleClass="card-stat-value" text="0" />
+                                            </children>
+                                        </VBox>
+                                        <VBox styleClass="card-stat" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label styleClass="card-stat-title" text="SERVICES OFFERED" />
+                                                <Label fx:id="lblTotalServices" styleClass="card-stat-value" text="0" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                
+                                <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <VBox styleClass="card" prefWidth="400.0" alignment="CENTER" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label styleClass="label-header" text="Request Status Distribution" />
+                                                <PieChart fx:id="chartStatusDistribution" legendSide="BOTTOM" prefHeight="280.0" />
+                                            </children>
+                                        </VBox>
+                                        <VBox styleClass="card" alignment="TOP_LEFT" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label styleClass="label-header" text="Quick System Stats" />
+                                                <VBox spacing="15.0" style="-fx-padding: 20 0 0 0;">
+                                                    <children>
+                                                        <HBox spacing="10.0">
+                                                            <children>
+                                                                <Label text="Admin Accounts:" style="-fx-text-fill: #A5A5B1; -fx-font-weight: bold; -fx-min-width: 150;" />
+                                                                <Label fx:id="lblAdminCount" text="0" style="-fx-font-weight: bold;" />
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox spacing="10.0">
+                                                            <children>
+                                                                <Label text="Client Accounts:" style="-fx-text-fill: #A5A5B1; -fx-font-weight: bold; -fx-min-width: 150;" />
+                                                                <Label fx:id="lblClientCount" text="0" style="-fx-font-weight: bold;" />
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox spacing="10.0">
+                                                            <children>
+                                                                <Label text="Completed Jobs:" style="-fx-text-fill: #A5A5B1; -fx-font-weight: bold; -fx-min-width: 150;" />
+                                                                <Label fx:id="lblCompletedCount" text="0" style="-fx-font-weight: bold;" />
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox spacing="10.0">
+                                                            <children>
+                                                                <Label text="Pending Requests:" style="-fx-text-fill: #A5A5B1; -fx-font-weight: bold; -fx-min-width: 150;" />
+                                                                <Label fx:id="lblPendingCount" text="0" style="-fx-font-weight: bold;" />
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- PANE 2: SERVICES CATALOG -->
+                        <VBox fx:id="paneServices" spacing="20.0" visible="false">
+                            <children>
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label styleClass="label-title" text="Services Catalog Manager" />
+                                        <Label styleClass="label-subtitle" text="Create, update, and remove agency services from the active catalog." />
+                                    </children>
+                                </VBox>
+                                
+                                <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <!-- Service List Table -->
+                                        <TableView fx:id="tableServices" HBox.hgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="colServiceId" prefWidth="50.0" text="ID" />
+                                                <TableColumn fx:id="colServiceName" prefWidth="180.0" text="Service Name" />
+                                                <TableColumn fx:id="colServiceCategory" prefWidth="100.0" text="Category" />
+                                                <TableColumn fx:id="colServicePrice" prefWidth="100.0" text="Base Price" />
+                                                <TableColumn fx:id="colServiceDesc" prefWidth="250.0" text="Description" />
+                                            </columns>
+                                        </TableView>
+                                        
+                                        <!-- Service Input Form -->
+                                        <VBox prefWidth="300.0" spacing="15.0" styleClass="card">
+                                            <children>
+                                                <Label styleClass="label-header" text="Service Details" />
+                                                
+                                                <VBox spacing="5.0">
+                                                    <children>
+                                                        <Label text="Service Name" />
+                                                        <TextField fx:id="txtServiceName" promptText="Web Design" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="5.0">
+                                                    <children>
+                                                        <Label text="Category" />
+                                                        <TextField fx:id="txtServiceCategory" promptText="Design / Dev / Marketing" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="5.0">
+                                                    <children>
+                                                        <Label text="Base Price ($)" />
+                                                        <TextField fx:id="txtServicePrice" promptText="499.00" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="5.0">
+                                                    <children>
+                                                        <Label text="Description" />
+                                                        <TextArea fx:id="txtServiceDesc" prefHeight="100.0" promptText="Detailed service scope description..." wrapText="true" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <HBox spacing="10.0" style="-fx-padding: 10 0 0 0;">
+                                                    <children>
+                                                        <Button fx:id="btnSaveService" mnemonicParsing="false" onAction="#handleSaveService" styleClass="btn-primary" text="Save" HBox.hgrow="ALWAYS" maxWidth="1.7976931348623157E308"/>
+                                                        <Button fx:id="btnDeleteService" mnemonicParsing="false" onAction="#handleDeleteService" styleClass="btn-danger" text="Remove" />
+                                                        <Button mnemonicParsing="false" onAction="#clearServiceForm" styleClass="btn-secondary" text="Clear" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- PANE 3: CLIENT REQUESTS -->
+                        <VBox fx:id="paneRequests" spacing="20.0" visible="false">
+                            <children>
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label styleClass="label-title" text="Client Service Requests" />
+                                        <Label styleClass="label-subtitle" text="Review customer project bookings, update statuses, and leave progress feedback." />
+                                    </children>
+                                </VBox>
+                                
+                                <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <!-- Requests Table -->
+                                        <TableView fx:id="tableRequests" HBox.hgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="colReqId" prefWidth="40.0" text="ID" />
+                                                <TableColumn fx:id="colReqClient" prefWidth="120.0" text="Client Name" />
+                                                <TableColumn fx:id="colReqService" prefWidth="150.0" text="Service" />
+                                                <TableColumn fx:id="colReqTitle" prefWidth="150.0" text="Project Title" />
+                                                <TableColumn fx:id="colReqPrice" prefWidth="80.0" text="Quote" />
+                                                <TableColumn fx:id="colReqDate" prefWidth="90.0" text="Target Date" />
+                                                <TableColumn fx:id="colReqStatus" prefWidth="90.0" text="Status" />
+                                            </columns>
+                                        </TableView>
+                                        
+                                        <!-- Update Request Panel -->
+                                        <VBox prefWidth="300.0" spacing="15.0" styleClass="card">
+                                            <children>
+                                                <Label styleClass="label-header" text="Manage Request" />
+                                                
+                                                <VBox spacing="3.0">
+                                                    <children>
+                                                        <Label text="Project Title" style="-fx-text-fill: #A5A5B1; -fx-font-size: 11px;" />
+                                                        <Label fx:id="lblReqProjectTitle" text="Select a request..." style="-fx-font-weight: bold; -fx-font-size: 14px;" wrapText="true" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="3.0">
+                                                    <children>
+                                                        <Label text="Description" style="-fx-text-fill: #A5A5B1; -fx-font-size: 11px;" />
+                                                        <Label fx:id="lblReqDesc" text="No request selected." style="-fx-font-size: 12px;" wrapText="true" prefHeight="80.0" alignment="TOP_LEFT" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="5.0">
+                                                    <children>
+                                                        <Label text="Status" />
+                                                        <ComboBox fx:id="comboReqStatus" prefWidth="150.0" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="5.0">
+                                                    <children>
+                                                        <Label text="Admin Comments / Logs" />
+                                                        <TextArea fx:id="txtReqComments" prefHeight="100.0" promptText="Enter feedback or updates on project progress..." wrapText="true" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <HBox spacing="10.0" style="-fx-padding: 10 0 0 0;">
+                                                    <children>
+                                                        <Button fx:id="btnSaveRequest" mnemonicParsing="false" onAction="#handleSaveRequest" styleClass="btn-primary" text="Submit Update" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- PANE 4: USER ACCOUNTS -->
+                        <VBox fx:id="paneUsers" spacing="20.0" visible="false">
+                            <children>
+                                <VBox spacing="5.0">
+                                    <children>
+                                        <Label styleClass="label-title" text="User Accounts Directory" />
+                                        <Label styleClass="label-subtitle" text="Register system administrators and clients or manage access lists." />
+                                    </children>
+                                </VBox>
+                                
+                                <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <!-- Users Table -->
+                                        <TableView fx:id="tableUsers" HBox.hgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="colUserId" prefWidth="50.0" text="ID" />
+                                                <TableColumn fx:id="colUserUsername" prefWidth="120.0" text="Username" />
+                                                <TableColumn fx:id="colUserRole" prefWidth="100.0" text="Role" />
+                                                <TableColumn fx:id="colUserFullName" prefWidth="180.0" text="Full Name" />
+                                                <TableColumn fx:id="colUserEmail" prefWidth="180.0" text="Email" />
+                                                <TableColumn fx:id="colUserPhone" prefWidth="120.0" text="Phone" />
+                                            </columns>
+                                        </TableView>
+                                        
+                                        <!-- Add User Form -->
+                                        <VBox prefWidth="300.0" spacing="12.0" styleClass="card">
+                                            <children>
+                                                <Label styleClass="label-header" text="New Account Registration" />
+                                                
+                                                <VBox spacing="3.0">
+                                                    <children>
+                                                        <Label text="Username" />
+                                                        <TextField fx:id="txtUserUsername" promptText="new_user" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="3.0">
+                                                    <children>
+                                                        <Label text="Password" />
+                                                        <PasswordField fx:id="txtUserPassword" promptText="Enter a password" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="3.0">
+                                                    <children>
+                                                        <Label text="Role" />
+                                                        <ComboBox fx:id="comboUserRole" prefWidth="150.0" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="3.0">
+                                                    <children>
+                                                        <Label text="Full Name" />
+                                                        <TextField fx:id="txtUserFullName" promptText="Jane Doe" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="3.0">
+                                                    <children>
+                                                        <Label text="Email Address" />
+                                                        <TextField fx:id="txtUserEmail" promptText="jane@example.com" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <VBox spacing="3.0">
+                                                    <children>
+                                                        <Label text="Phone Number" />
+                                                        <TextField fx:id="txtUserPhone" promptText="Digits only" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <HBox spacing="10.0" style="-fx-padding: 10 0 0 0;">
+                                                    <children>
+                                                        <Button fx:id="btnCreateUser" mnemonicParsing="false" onAction="#handleCreateUser" styleClass="btn-primary" text="Register Account" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                                                        <Button fx:id="btnDeleteUser" mnemonicParsing="false" onAction="#handleDeleteUser" styleClass="btn-danger" text="Delete" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                    </children>
+                </StackPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

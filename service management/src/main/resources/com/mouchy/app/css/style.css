@@ -1,0 +1,356 @@
+/* Custom CSS Stylesheet for Mouchy Service Portal */
+
+/* Base Styles */
+.root {
+    -fx-background-color: #1E1E2E;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-text-fill: #FFFFFF;
+}
+
+.label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.label-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #7C4DFF; /* Accent Purple */
+}
+
+.label-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #A5A5B1; /* Muted Text */
+}
+
+.label-header {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    -fx-background-color: #11111b;
+    -fx-padding: 20 0 20 0;
+}
+
+.sidebar-brand {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00E5FF; /* Cyan Accent */
+    -fx-alignment: center;
+    -fx-padding: 0 0 30 0;
+}
+
+
+/* Resizable sidebar split pane */
+.sidebar-split-pane {
+    -fx-background-color: #1E1E2E;
+    -fx-padding: 0;
+}
+
+.sidebar-split-pane > .split-pane-divider {
+    -fx-background-color: #34344A;
+    -fx-padding: 0 2 0 2;
+    -fx-cursor: h-resize;
+}
+
+.sidebar-split-pane > .split-pane-divider:hover {
+    -fx-background-color: #7C4DFF;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #A5A5B1;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center-left;
+    -fx-padding: 12 25 12 25;
+    -fx-background-radius: 0;
+    -fx-border-width: 0 0 0 4;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #252538;
+    -fx-text-fill: #FFFFFF;
+}
+
+.nav-button:selected {
+    -fx-background-color: #1e1e2e;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #7C4DFF;
+}
+
+.nav-button-active {
+    -fx-background-color: #252538;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #7C4DFF;
+}
+
+/* Panel Layouts */
+.content-area {
+    -fx-background-color: #1E1E2E;
+    -fx-padding: 30;
+}
+
+/* Cards */
+.card {
+    -fx-background-color: #252538;
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 10, 0, 0, 4);
+}
+
+.card-stat {
+    -fx-background-color: #252538;
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-min-width: 180;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 8, 0, 0, 4);
+}
+
+.card-stat-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #A5A5B1;
+}
+
+.card-stat-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00E5FF;
+}
+
+/* Inputs & Form Controls */
+.text-field, .password-field, .combo-box, .date-picker, .text-area {
+    -fx-background-color: #2D2D44;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #3E3E5C;
+    -fx-border-width: 1;
+    -fx-padding: 8 12 8 12;
+    -fx-prompt-text-fill: #707080;
+}
+
+.text-field:focused, .password-field:focused, .combo-box:focused, .date-picker:focused, .text-area:focused {
+    -fx-border-color: #7C4DFF;
+    -fx-background-color: #2D2D44;
+}
+
+/* JavaFX TextArea paints its editable surface in an internal .content region.
+   Style that region explicitly so white text never ends up on a white box. */
+.text-area .scroll-pane,
+.text-area .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.text-area .content {
+    -fx-background-color: #2D2D44;
+    -fx-background-radius: 6;
+}
+
+.text-area:focused .content {
+    -fx-background-color: #2D2D44;
+}
+
+.text-area .text {
+    -fx-fill: #FFFFFF;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2D2D44;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #2D2D44;
+    -fx-background-radius: 6;
+    -fx-border-color: #3E3E5C;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2D2D44;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #7C4DFF;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Buttons */
+.button {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btn-primary {
+    -fx-background-color: #7C4DFF;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #9C75FF;
+}
+
+.btn-secondary {
+    -fx-background-color: #3E3E5C;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #4E4E75;
+}
+
+.btn-success {
+    -fx-background-color: #00C853;
+}
+
+.btn-success:hover {
+    -fx-background-color: #2E7D32;
+}
+
+.btn-danger {
+    -fx-background-color: #D50000;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #C62828;
+}
+
+.btn-info {
+    -fx-background-color: #00B0FF;
+}
+
+.btn-info:hover {
+    -fx-background-color: #0091EA;
+}
+
+/* Tables */
+.table-view {
+    -fx-background-color: #252538;
+    -fx-background-radius: 8;
+    -fx-border-color: #3E3E5C;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-padding: 0;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #1E1E2E;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: #1E1E2E;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-border-color: #2D2D44;
+    -fx-border-width: 0 1 1 0;
+    -fx-size: 35;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-alignment: center-left;
+}
+
+.table-row-cell {
+    -fx-background-color: #252538;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #2D2D44;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #2D2D40;
+}
+
+.table-row-cell:filled:hover {
+    -fx-background-color: #35354F;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #7C4DFF;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 8;
+}
+
+/* Scroll Bars in Dark Mode */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: #1E1E2E;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #3E3E5C;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #7C4DFF;
+}
+
+/* Pie Chart styling */
+.chart-pie-label {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 11px;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Specific view classes */
+.login-bg {
+    -fx-background-color: linear-gradient(to bottom right, #0F0F1A, #1E1E2E);
+}
+
+.badge-pending {
+    -fx-background-color: #FFAB00;
+    -fx-text-fill: #000000;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 4;
+}
+
+.badge-progress {
+    -fx-background-color: #00B0FF;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 4;
+}
+
+.badge-completed {
+    -fx-background-color: #00C853;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 4;
+}
+
+.badge-rejected {
+    -fx-background-color: #D50000;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 4;
+}
