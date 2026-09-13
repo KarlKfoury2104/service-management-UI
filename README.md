@@ -38,22 +38,27 @@ Database:
 
 ![Login and Registration](screenshots/login.png)
 
-### Admin Dashboard
+![Login and Registration](screenshots/signup.png)
 
-![Admin Dashboard](screenshots/admin-dashboard.png)
+### Admin: Dashboard
 
-### Service Management
+![Admin: Dashboard](screenshots/admindashboard.png)
 
-![Service Management](screenshots/admin-services.png)
+### Admin: Creating and Deleting requestable services
 
-### Client Request Management
+  ![Admin: Creating and Deleting requestable services](screenshots/adminservicemanagement.png)
 
-![Client Request Management](screenshots/admin-requests.png)
+### Admin: Managing Service Requests
 
-### Client Service Catalog
+![Admin: Managing Service Requests](screenshots/adminservicerequestmanagement.png)
 
-![Client Service Catalog](screenshots/client-services.png)
+### Admin: Managing client accounts
 
-### Client Booking Tracking
+![Admin: Managing client accounts](screenshots/adminuseraccountsmanagement.png)
 
-![Client Booking Tracking](screenshots/client-bookings.png)
+### Client: Requesting a service
+
+![Client Booking Tracking](screenshots/clientservicerequest.png)
+![Client Booking Tracking](screenshots/clientservicerequest2.png)
+
+
